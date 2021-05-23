@@ -90,15 +90,15 @@ Win::Win(QWidget *parent):QWidget(parent)
     /*
      * Связываем сигнал нажатия на кнопку "+1" со слотом add_one первого счетчика
     */
-    connect(calcbutton, SIGNAL(clicked(bool)), edit1, SLOT(add_one()));
+     connect(calcbutton, &QPushButton::clicked, edit1, &Counter::add_one);
 
     /*
      * Связываем сигнал tick_signal, генерируемый первым счетчиком со слотом add_one второго счетчика
     */
-    connect(edit1, SIGNAL(tick_signal()), edit2, SLOT(add_one()));
+    connect(edit1, &Counter::tick_signal, edit2, &Counter::add_one);
 
     /*
      * Связываем сигнал нажатия на кнопку "Выход" со слотом close()
     */
-    connect(exitbutton, SIGNAL(clicked(bool)), this, SLOT(close()));
+     connect(exitbutton, &QPushButton::clicked, this, &Win::close);
 }
